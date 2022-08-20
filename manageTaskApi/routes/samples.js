@@ -20,7 +20,15 @@ async function dispData() {
   });
   return userList[0];
 }
+async function addSampleData() {
+  const docRef = db.collection("users").doc("alovelace");
 
+  await docRef.set({
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815,
+  });
+}
 /* サンプルAPI①
  * http://localhost:3000/samples にGETメソッドのリクエストを投げると、
  * JSON形式で文字列を返す。
@@ -41,12 +49,15 @@ router.get("/", async function (req, res, next) {
  * JSON形式で文字列を返す。
  */
 router.get("/hello", function (req, res, next) {
+  addSampleData();
+
   const param = { result: "Hello World !" };
   res.header("Content-Type", "application/json; charset=utf-8");
   res.send(param);
 });
 
 router.post("/api", function (req, res, next) {
+  // addSampleData();
   const param = {
     値: "POSTメソッドのリクエストを受け付けました",
     bodyの値: req,
