@@ -9,6 +9,7 @@ var usersRouter = require("./routes/users");
 var samples = require("./routes/samples.js"); // ★★★★★　追記箇所1　★★★★★
 
 var app = express();
+const port = process.env.PORT || 5000;
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -40,4 +41,8 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+app.listen(port, () => {
+  console.log(`listening on *:${port}`);
+});
+
+// module.exports = app;
