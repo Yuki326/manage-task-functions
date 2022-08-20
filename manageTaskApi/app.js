@@ -6,7 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var samples = require("./routes/samples"); // ★★★★★　追記箇所1　★★★★★
+var samples = require("./routes/samples.js"); // ★★★★★　追記箇所1　★★★★★
 
 var app = express();
 
